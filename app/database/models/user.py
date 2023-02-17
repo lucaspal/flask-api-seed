@@ -30,4 +30,3 @@ class UserModel(BaseModel):
     @classmethod
     def find_by_email(cls, email: str):
         return cls.query.filter_by(email=email).first()
-

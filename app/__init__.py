@@ -8,7 +8,6 @@ from flask_jwt_extended import JWTManager
 from app.database.db import metadata
 from config import ConfigFactory
 
-
 db = SQLAlchemy(metadata=metadata)
 migrate = Migrate()
 marshmallow = Marshmallow()

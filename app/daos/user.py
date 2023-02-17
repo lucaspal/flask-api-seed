@@ -4,7 +4,7 @@ from werkzeug.exceptions import abort
 
 from app.daos.base import BaseDAO
 from app.database.models.user import UserModel
-from app.herlpers.localization import gettext
+from app.helpers.localization import gettext
 
 
 class UserDAO(BaseDAO):
