@@ -29,6 +29,9 @@ class UserDAO(BaseDAO):
         self.session.delete(user)
         self.session.commit()
 
+    def check_email_available(self, _email):
+        return self.session.query(self.model).filter_by(email=_email).count() == 0
+
     def _find_by_email(self, _email):
         return self.session.query(self.model).filter_by(email=_email).first()
 
