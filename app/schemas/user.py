@@ -3,7 +3,6 @@ from app.schemas.base import BaseModelSchema
 
 
 class UserSchema(BaseModelSchema):
-
     class Meta(BaseModelSchema.Meta):
         model = UserModel
         load_only = ("password",)

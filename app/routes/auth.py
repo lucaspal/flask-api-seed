@@ -5,7 +5,6 @@ from app.daos.user import user_dao
 from app.schemas.user import UserSchema
 from app.schemas.auth import AuthCredentialSchema, AuthResponseSchema
 
-
 auth_bp = Blueprint("auth", __name__)
 user_schema = UserSchema()
 auth_creds_schema = AuthCredentialSchema()

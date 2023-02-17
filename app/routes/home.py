@@ -1,7 +1,6 @@
 from flask import Blueprint
 from flask_jwt_extended import jwt_required
 
-
 home_bp = Blueprint("home", __name__)
 
 

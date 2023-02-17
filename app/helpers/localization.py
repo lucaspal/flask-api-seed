@@ -1,6 +1,5 @@
 import json
 
-
 default_locale = "en-gb"
 cached_strings = {}
 
