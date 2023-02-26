@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+from flask_jwt_extended import jwt_required
 
 from app.schemas.user import UserSchema
 from app.daos.user import user_dao
@@ -21,3 +22,10 @@ def create_user():
         return user_schema.dump(created_user), 201
     else:
         return gettext('user_exists'), 403
+
+
+@user_bp.route("/all", methods=["GET"])
+@jwt_required()
+def get_all_users():
+    users = user_dao.get_all()
+    return user_schema.dump(users, many=True)
