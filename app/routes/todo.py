@@ -34,3 +34,32 @@ def create_todo():
 
     created_todo = todo_dao.create_todo(todo)
     return todo_schema.dump(created_todo), 201
+
+
+# params: id (int)
+@todo_bp.route("/<int:todo_id>", methods=["GET"])
+@jwt_required()
+def get_todo_by_id(todo_id: int):
+    # gets the id from the url
+    todo = todo_dao.get_todo_by_id(todo_id)
+    # return the todo
+    return todo_schema.dump(todo), 200
+
+
+# params: id (int)
+# query params: completed (bool)
+@todo_bp.route("/<int:todo_id>", methods=["PUT"])
+@jwt_required()
+def mark_todo_as_done(todo_id: int):
+    # gets the completed value from the query params
+    completed_argument = request.args.get("completed", default=False, type=lambda v: v.lower() == 'true')
+
+    if completed_argument is not None and type(completed_argument) == bool:
+        # gets the id from the url
+        todo = todo_dao.get_todo_by_id(todo_id)
+        todo.completed = completed_argument
+        todo_dao.update_todo(todo)
+        return todo_schema.dump(todo), 200
+    else:
+        # Returns error saying that either the completed argument is missing or it is not a boolean
+        return {"error": "Missing or invalid completed argument"}, 400

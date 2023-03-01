@@ -8,10 +8,10 @@ class TodoDao(BaseDAO):
 
     def get_todos(self, user_id):
         # Get the user id from the token
-        
+
         return self.session.query(self.model).filter_by(user_id=user_id).all()
 
-    def get_todo_by_id(self, todo_id):
+    def get_todo_by_id(self, todo_id) -> TodoModel:
         return self.session.query(self.model).filter_by(id=todo_id).first()
 
     def create_todo(self, todo):
