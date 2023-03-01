@@ -1,4 +1,4 @@
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, get_jwt_identity
 from werkzeug.exceptions import abort
 
 from app.daos.base import BaseDAO
@@ -30,6 +30,10 @@ class UserDAO(BaseDAO):
 
     def check_email_available(self, _email):
         return self.session.query(self.model).filter_by(email=_email).count() == 0
+
+    def get_current_user(self):
+        email = get_jwt_identity()
+        return self._find_by_email(email)
 
     def _find_by_email(self, _email):
         return self.session.query(self.model).filter_by(email=_email).first()

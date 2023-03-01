@@ -8,6 +8,7 @@ class BaseModelSchema(SQLAlchemyAutoSchema):
     class Meta:
         sqla_session = Session
         load_instance = True
+        include_relationships = True
 
 
 class BaseCustomSchema(Schema):

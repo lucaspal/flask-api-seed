@@ -29,11 +29,13 @@ def create_app():
         from app.routes.home import home_bp
         from app.routes.user import user_bp
         from app.routes.auth import auth_bp
+        from app.routes.todo import todo_bp
 
         # register blueprints
         app.register_blueprint(home_bp, url_prefix="/api/home")
         app.register_blueprint(user_bp, url_prefix="/api/user")
         app.register_blueprint(auth_bp, url_prefix="/api/auth")
+        app.register_blueprint(todo_bp, url_prefix="/api/todo")
 
         # global handlers
         @app.errorhandler(ValidationError)
