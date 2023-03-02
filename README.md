@@ -64,11 +64,11 @@ stored as part of repository.
 - to run docker web and database in containers using docker compose:
     - to build the images:
         ```
-        docker-compose build
+        docker compose build
         ```
     - to run the images:
         ```
-        docker-compose up
+        docker compose up
         ```
 
 ## Tests
