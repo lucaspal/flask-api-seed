@@ -24,6 +24,15 @@ def create_user():
         return gettext('user_exists'), 403
 
 
+# route to delete uer
+@user_bp.route("/<int:user_id>", methods=["DELETE"])
+@jwt_required()
+def delete_user(user_id: int):
+    user = user_dao.get_by_id(user_id)
+    user_dao.delete_user(user)
+    return gettext("user_deleted"), 200
+
+
 @user_bp.route("/all", methods=["GET"])
 @jwt_required()
 def get_all_users():

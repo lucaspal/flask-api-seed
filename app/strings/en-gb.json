@@ -1,4 +1,7 @@
 {
     "user_exists": "user already exists.",
-    "wrong_credentials": "wrong user name or password"
+    "wrong_credentials": "wrong user name or password",
+    "user_has_demands": "user has demands",
+    "user_deleted": "user deleted",
+    "car_deleted": "car deleted"
 }
